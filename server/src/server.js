@@ -34,11 +34,11 @@ app.use(express.urlencoded({extended:true}))
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-const server =http.createServer((req,res)=>{
-  res.writeHead(200,{"content-Type":"text/plain"})
-  res.end("hello world")
-})
-// app.use('/api/users',userRoutes);
+// const server =http.createServer((req,res)=>{
+//   res.writeHead(200,{"content-Type":"text/plain"})
+//   res.end("hello world")
+// })
+app.use('/api/users',userRoutes);
 // app.use('/api/admin',);
 
 app.get('/',(req,res)=>{
