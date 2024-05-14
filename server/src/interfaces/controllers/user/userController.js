@@ -7,10 +7,11 @@ import { logout } from '../../../middlewares/logout.js';
 import { SaveToSession } from '../../../usecases/userUseCases/otpStore.js';
 import { verifyOtp } from '../../../services/otp.js';
 import { verifyTheOtps } from '../../../usecases/userUseCases/verifyOtp.js';
+import { csvFilesUploads } from '../../../usecases/userUseCases/csvUpload.js';
 
 
 
-//Login user  - public  - http://localhost:5000/api/users/
+//Login user  - public  - http://localhost:9000/api/users/
 export const userLogin = asyncHandler(async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -74,3 +75,15 @@ export const verifyOtpSignup = asyncHandler(async (req, res) => {
   }
 })
 
+
+//csv file upload======================private
+export const csvFileUpload = asyncHandler(async (req, res) => {
+  try {
+    const { id } = await req.body
+    const image = req.file
+    const responseCSV = await csvFilesUploads(req, res, image,id)
+    res.json(responseCSV)
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+})

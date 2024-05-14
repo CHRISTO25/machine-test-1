@@ -14,6 +14,17 @@ export const findUserByEmail = asyncHandler(async (email) => {
     }
 })
 
+// Finding user using id
+export const findUserById = asyncHandler(async (id) => {
+    try {
+
+        const userData = await User.findOne({ _id:id });
+        return userData
+    } catch (error) {
+        console.log(error);
+        throw error
+    }
+})
 
 
 //Finding User with Number

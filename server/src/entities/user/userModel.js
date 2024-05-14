@@ -18,6 +18,15 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    
+      csvFiles:[
+        {
+           image:{
+            type:String
+           } 
+        }
+      ]
+    ,
     status: {
         type: Boolean,
         default: true

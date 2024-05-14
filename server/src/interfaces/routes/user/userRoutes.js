@@ -1,7 +1,9 @@
 import express from 'express';
+import store from '../../../middlewares/multer.js';
+import { protect } from '../../../middlewares/authMiddleware.js';
 
-import {protect} from '../../../middlewares/authMiddleware.js'
-import {   storeInCookiesWorker, userLogin, userLogout,  verifyOtpSignup } from '../../controllers/user/userController.js';
+
+import {   csvFileUpload, storeInCookiesWorker, userLogin, userLogout,  verifyOtpSignup } from '../../controllers/user/userController.js';
 
 
 
@@ -12,6 +14,7 @@ router.post('/signin',userLogin)
 router.post('/logout',userLogout)
 router.post('/otp',storeInCookiesWorker)
 router.post('/otpVerify',verifyOtpSignup)
+router.post('/csvUpload',protect, store.single('image'),csvFileUpload)
 
 
 
