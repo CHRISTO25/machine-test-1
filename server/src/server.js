@@ -7,7 +7,7 @@ import userRoutes from './interfaces/routes/user/userRoutes.js'
 import cors from "cors"
 import session from 'express-session'
 import { v4 as uuidv4 } from 'uuid';
-
+import http from 'http'
 
 dotenv.config();
 connectDB();
@@ -34,8 +34,11 @@ app.use(express.urlencoded({extended:true}))
 
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-
-app.use('/api/users',userRoutes);
+const server =http.createServer((req,res)=>{
+  res.writeHead(200,{"content-Type":"text/plain"})
+  res.end("hello world")
+})
+// app.use('/api/users',userRoutes);
 // app.use('/api/admin',);
 
 app.get('/',(req,res)=>{
