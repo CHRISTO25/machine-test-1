@@ -1,0 +1,26 @@
+1. https://machine-test-1-3.onrender.com/api/users/signin     public
+ 
+ field names =>email,password
+
+2. https://machine-test-1-3.onrender.com/api/users/otp        public
+
+field names =>name, email, phone , password
+
+3. https://machine-test-1-3.onrender.com/api/otpVerify        public
+
+ field names => otp
+
+4. https://machine-test-1-3.onrender.com/api/users/logout     private
+
+5. https://machine-test-1-3.onrender.com/api/users/csvUpload  private
+ 
+  field names => id(user Id) , image
+
+
+  Implemented clean architecture ,node mailer ,node js , mongo db, express
+
+
+localhost run at - npm run server
+
+backend validation for each request
+
